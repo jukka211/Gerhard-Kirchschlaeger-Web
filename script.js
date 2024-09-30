@@ -4,49 +4,7 @@
 
 // ------------------
        
-       
-       document.addEventListener('DOMContentLoaded', function () {
-            const titleDiv = document.querySelector('.text-mobile');
-            let initialY = null; // Track initial touch position
-            let isDragging = false; // Track dragging state
-        
-            // Handle touch start
-            titleDiv.addEventListener('touchstart', function (e) {
-                initialY = e.touches[0].clientY; // Get the Y position of the first touch
-                isDragging = true;
-                titleDiv.style.transition = 'none'; // Disable transition during dragging
-            });
-        
-            // Handle touch move
-            titleDiv.addEventListener('touchmove', function (e) {
-                if (!isDragging || initialY === null) return;
-        
-                const currentY = e.touches[0].clientY;
-                const distanceDragged = initialY - currentY; // Calculate how far we've dragged up
-        
-                if (distanceDragged > 0) { // If dragged upward
-                    // Calculate the scale factor for the Y-axis (stretching down only)
-                    let scaleFactorY = 1 - distanceDragged / 500; // Adjust 800 to control sensitivity
-                    if (scaleFactorY < 0.15) scaleFactorY = 0.15; // Limit minimum scaling
-                    
-                    // Apply scaling only to the Y-axis
-                    titleDiv.style.transform = `scaleY(${scaleFactorY})`;
-                }
-            });
-        
-            // Handle touch end
-            titleDiv.addEventListener('touchend', function () {
-                isDragging = false;
-                initialY = null;
-        
-                // Smoothly transition back to original size on the Y-axis
-                titleDiv.style.transition = 'transform 0.5s ease-in-out'; // Smooth reset transition
-                titleDiv.style.transform = `scaleY(1)`; // Reset to original size on the Y-axis
-            });
-        });
-
-        
-        
+ 
 
 
 
