@@ -219,10 +219,10 @@ color:#FFFFFF;
         overflow: hidden;
     }
     .text-mobile a:hover {
-        text-decoration: underline;
-        text-decoration-thickness: 3px;
+        text-decoration: none;
+     
         user-select: none;
-        text-decoration-color: black;
+       
      
     }
     .inst {
@@ -284,4 +284,10 @@ color:#FFFFFF;
     .inst img {
         width: 16px;
    }
+}
+
+@media only screen and (max-width: 640px) and (orientation: landscape) {
+    .text-mobile {
+        transform: rotate(90deg);
+    }
 }
