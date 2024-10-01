@@ -99,6 +99,43 @@ function scaleElementAndShiftLetters(deltaX) {
     }
 }
 
+// Mobile (Touch) Events
+if (isTouchDevice) {
+    document.querySelectorAll('.title span').forEach(span => {
+        span.addEventListener('touchstart', function(event) {
+            draggedElement = this; // Get the individual letter being dragged
+            initialX = event.touches[0].clientX; // Store the initial X position when touch starts
+            initialY = event.touches[0].clientY; // Store the initial Y position when touch starts
+            event.preventDefault(); // Prevent default touch behavior
+        });
+    });
+
+    document.addEventListener('touchmove', function(event) {
+        if (draggedElement) {
+            const currentX = event.touches[0].clientX;
+            const currentY = event.touches[0].clientY;
+            const deltaX = currentX - initialX; // Calculate the movement on the X-axis
+            const deltaY = currentY - initialY; // Calculate the movement on the Y-axis
+
+            if (Math.abs(deltaY) > Math.abs(deltaX)) {
+                // If vertical movement is greater, scale and shift vertically (for mobile)
+                scaleElementAndShiftDivs(deltaY);
+            } else {
+                // If horizontal movement is greater, scale and shift horizontally (for desktop-like behavior)
+                scaleElementAndShiftLetters(deltaX);
+            }
+        }
+    });
+
+    document.addEventListener('touchend', function() {
+        // Reset the transform and margins after dragging
+        document.querySelectorAll('.title span').forEach(span => {
+            span.style.transform = '';
+            span.style.marginRight = '';
+        });
+        draggedElement = null; // Reset dragged element on touch end
+    });
+}
 
     // Desktop (Mouse) Events
     if (!isTouchDevice) {
