@@ -286,7 +286,7 @@ color:#FFFFFF;
    }
 }
 
-@media only screen and (max-width: 920px) and (orientation: landscape) {
+@media only screen and (max-width: 940px) and (orientation: landscape) {
     body {
         margin: 0;
         padding: 0;
