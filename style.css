@@ -286,8 +286,48 @@ color:#FFFFFF;
    }
 }
 
-@media only screen and (max-width: 640px) and (orientation: landscape) {
+@media only screen and (max-width: 920px) and (orientation: landscape) {
+    body {
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: flex-start; /* Align items to the start of the screen */
+        align-items: flex-end; /* Align items to the bottom of the screen */
+        height: 100vh; /* Make sure body takes full height */
+        width: 100vw; /* Make sure body takes full width */
+        overflow: hidden; /* Prevent overflow */
+    }
+
     .text-mobile {
-        transform: rotate(90deg);
+        font-size: 3.5rem;
+        line-height: 3rem;
+        letter-spacing: -2.5px;
+        transform-origin: bottom left; /* Rotate around bottom-left corner */
+        width: auto; /* Set width as per content */
+        height: auto; /* Set height as per content */
+        padding-bottom: 20px; /* Optional padding if you need space from the bottom */
+        padding-left: 10px;
+        padding-top: 10px;
+        font-family: 'Freizeit', sans-serif; /* Fallback font */
+        transition: all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1.1); /* Smooth effect */
+        user-select: none;
+        overflow: hidden; /* Prevent overflow */
+        
+        position: absolute; /* Absolute positioning */
+        bottom: 0; /* Align to bottom */
+        left: 0; /* Align to left */
+        display: block;
+        /* Rotate and translate */
+        transform: rotate(-90deg) translate(0, 100%);
+    }
+
+    .title {
+        display: none;
+
+    }
+
+    .inst {
+        bottom: 10px; /* Align to bottom */
+        right: 10px; /* Align to left */
     }
 }
