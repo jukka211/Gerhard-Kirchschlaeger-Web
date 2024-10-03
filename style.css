@@ -164,7 +164,7 @@ color:#FFFFFF;
 @media screen and (max-width: 620px) {
 
      #motionBtn {
-        position: absolute;
+        position: fixed;
         font-family: 'FreizeitMedium';
         font-size: 1.3rem;
         line-height: 85%;
@@ -179,6 +179,7 @@ color:#FFFFFF;
       justify-content: center;
       align-items: center;
       transition: all 600ms bic-bezier(0.34, 1.56, 0.64, 1.1);
+         overflow:hidden;
       }
       .allow {
         padding: 40px;
